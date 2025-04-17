@@ -1,0 +1,42 @@
+# 基础配置
+model: 'APSnet18'  # 可选: APSnet18, APSnet34, APSnet50
+block_type: 'resnet'  # 可选: resnet, transformer
+num_heads: 8  # transformer中的头数
+use_se: True
+use_dual_path: True
+random_seed: 42
+cuda_devices: '0'
+cudnn_benchmark: true
+
+# 数据集配置
+data_root: './datasets/ours/'
+label_root: './datasets/ours/'
+train_label_file: 'train_label.txt'
+test_label_file: 'test_label.txt'
+img_mean: 0.5
+img_std: 0.5
+
+# 训练配置
+batch_size: 6
+max_epoch: 300
+save_root: './temp/APS18-Vit-SE-Dual/'
+
+# 数据加载器配置
+num_workers: 4
+pin_memory: true
+prefetch_factor: 2
+persistent_workers: true
+
+# 优化器配置
+optimizer: 'adamw'
+weight_decay: 0.01  # AdamW通常使用更大的权重衰减
+base_lr: 0.001      # 通常AdamW使用较小的学习率
+
+# 学习率调度器配置
+scheduler: 'step'  # 可选: step, cosine
+lr_step_size: 10  # 仅适用于StepLR
+lr_gamma: 0.1  # 仅适用于StepLR
+
+# 保存和测试频率
+save_freq: 100
+test_freq: 10

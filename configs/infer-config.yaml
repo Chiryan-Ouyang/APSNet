@@ -1,0 +1,9 @@
+model: 'APSnet34'  # 可选: APSnet18, APSnet34, APSnet50
+block_type: 'resnet'  # 可选: resnet, transformer
+use_se: False
+use_dual_path: True
+model_weights: '/root/autodl-tmp/APS18-noSE-Dual/'
+img_mean: 0.5
+img_std: 0.5
+input_dir: './datasets/'
+output_dir: './output/'
